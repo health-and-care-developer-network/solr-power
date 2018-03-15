@@ -1,3 +1,11 @@
+# Fork of Solr search for Wordpress #
+
+This is a fork of the solr-power wordpress plugin to incorporate a few small customisations when incorporating the plugin into the NHS Developer Network
+
+The customisations are to allow the usual indexing of wordpress pages to work smoothly alongside additional pages in Solr, injected into the index using a Nutch crawler (see [here](https://github.com/health-and-care-developer-network/solr-search) for the configuration and scripts used for this).
+
+The original README for solr-search is below:
+
 # Solr Search for WordPress #
 **Contributors:** getpantheon, Outlandish Josh, 10up, collinsinternet, andrew.taylor  
 **Tags:** search  

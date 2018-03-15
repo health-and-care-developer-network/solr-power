@@ -182,7 +182,7 @@ class SolrPower_WP_Query {
 		$fields = null;
 		switch ( $query->get( 'fields' ) ) {
 			case 'ids':
-				$fields = 'ID';
+				$fields = 'id';  // AH Updated case of ID
 				break;
 			default:
 				$fields = null;
@@ -249,7 +249,9 @@ class SolrPower_WP_Query {
 				}
 
 				if ( 'post_id' === $key ) {
-					$post->ID = $value;
+					// AH Update case of ID
+					//$post->ID = $value;
+					$post->id = $value;
 					continue;
 				}
 
@@ -273,6 +275,7 @@ class SolrPower_WP_Query {
 	 */
 	private function parse_orderby( $orderby, $query ) {
 		// Used to filter values.
+		// AH Updated case of ID
 		$allowed_keys = array(
 			'post_name',
 			'post_author',
@@ -288,7 +291,7 @@ class SolrPower_WP_Query {
 			'modified',
 			'parent',
 			'type',
-			'ID',
+			'id',
 			'menu_order',
 			'comment_count',
 			'rand',
@@ -313,7 +316,8 @@ class SolrPower_WP_Query {
 		if ( ! in_array( $orderby, $allowed_keys ) ) {
 			return false;
 		}
-
+		
+		// AH Update case of ID
 		switch ( $orderby ) {
 			case 'post_name':
 			case 'post_author':
@@ -322,7 +326,7 @@ class SolrPower_WP_Query {
 			case 'post_modified':
 			case 'post_parent':
 			case 'post_type':
-			case 'ID':
+			case 'id':
 			case 'menu_order':
 			case 'comment_count':
 				$orderby_clause = $orderby;
@@ -450,9 +454,10 @@ class SolrPower_WP_Query {
 			'name',
 
 		);
-		$convert = array(
-			'p'       => 'ID',
-			'page_id' => 'ID',
+		// AH Update case of ID
+		$convert     = array(
+			'p'       => 'id',
+			'page_id' => 'id',
 			'name'    => 'post_name',
 		);
 		if ( ! $query->get( 's' ) && ! $query->get( 'solr_integrate' ) ) {
@@ -555,7 +560,9 @@ class SolrPower_WP_Query {
 					$multi_query = array();
 					foreach ( $terms as $value ) {
 						$multi_query[] = '(' . $field . ':' . $value . ')';
-						$wildcard      = '(ID:*)';
+						// AH Updated case of ID
+						//$wildcard      = '(ID:*)';
+						$wildcard      = '(id:*)';
 
 						if ( ! in_array( $wildcard, $wildcards_used ) ) {
 							$wildcards_used[] = $wildcard;
@@ -586,7 +593,9 @@ class SolrPower_WP_Query {
 						$wildcards_used[] = $wildcard;
 					}
 
-					$query[] = '(ID:*)';
+					// AH Updated case of ID
+					//$query[] = '(ID:*)';
+					$query[] = '(id:*)';
 
 					$fq = implode( 'OR', $multi_query );
 					if ( ! in_array( $fq, $tax_fq ) ) {
@@ -605,7 +614,9 @@ class SolrPower_WP_Query {
 						$wildcards_used[] = $wildcard;
 					}
 
-					$query[] = '(ID:*)';
+					// AH Updated case of ID
+					//$query[] = '(ID:*)';
+					$query[] = '(id:*)';
 
 					$fq = implode( 'AND', $multi_query );
 					if ( ! in_array( $fq, $tax_fq ) ) {
@@ -731,7 +742,9 @@ class SolrPower_WP_Query {
 						$wildcards_used[] = $wildcard;
 					}
 
-					$query[] = '(ID:*)';
+					// AH Updated case of ID
+					//$query[] = '(ID:*)';
+					$query[] = '(id:*)';
 
 					$fq = implode( 'AND', $multi_query );
 					if ( ! in_array( $fq, $this->fq ) ) {

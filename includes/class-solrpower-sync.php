@@ -154,7 +154,9 @@ class SolrPower_Sync {
 		$bloginfo = get_blog_details( $blogid, false );
 
 		if ( $bloginfo->public && ! $bloginfo->archived && ! $bloginfo->spam && ! $bloginfo->deleted ) {
-			$postids = $wpdb->get_results( $wpdb->prepare( "SELECT ID FROM %s WHERE post_type = 'post' and post_status = 'publish';", $wpdb->base_prefix . $blogid . '_posts' ) );
+			// AH Updated case of ID
+			//$postids = $wpdb->get_results( $wpdb->prepare( "SELECT ID FROM %s WHERE post_type = 'post' and post_status = 'publish';", $wpdb->base_prefix . $blogid . '_posts' ) );
+			$postids = $wpdb->get_results( $wpdb->prepare( "SELECT id FROM %s WHERE post_type = 'post' and post_status = 'publish';", $wpdb->base_prefix . $blogid . '_posts' ) );
 
 			$solr   = get_solr();
 			$update = $solr->createUpdate();
@@ -241,7 +243,9 @@ class SolrPower_Sync {
 			} else {
 				$doc->setField( 'solr_id', $post_info->ID );
 			}
-			$doc->setField( 'ID', $post_info->ID );
+			// AH Updated case of ID
+			//$doc->setField( 'ID', $post_info->ID );
+			$doc->setField( 'id', $post_info->ID );
 			$doc->setField( 'permalink', get_permalink( $post_info->ID ) );
 			$doc->setField( 'wp', 'wp' );
 

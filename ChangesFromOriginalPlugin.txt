@@ -1,0 +1,23 @@
+Search for labelled changes: find . | xargs grep "AH " 2>/dev/null
+
+
+./includes/class-solrpower-batch-index.php:		// AH Updated case of ID
+./includes/class-solrpower-api.php:			// AH - Using QueryFields rather than a Boost Function to make these fields more important
+./includes/class-solrpower-api.php:			// AH - End of changes
+./includes/class-solrpower-api.php:			// AH - This doesn't seem to be working.. commenting it out seems to work much better.
+./includes/class-solrpower-api.php:			// AH - End of change
+./includes/class-solrpower-api.php:			// AH - Added Nutch custom post types
+./includes/class-solrpower-api.php:		// AH - The below logic is only needed/wanted for the stats page, not for the general searches
+./includes/class-solrpower-api.php:		// AH - End of change
+./includes/class-solrpower-wp-query.php:				$fields = 'id';  // AH Updated case of ID
+./includes/class-solrpower-wp-query.php:					// AH Update case of ID
+./includes/class-solrpower-wp-query.php:		// AH Updated case of ID
+./includes/class-solrpower-wp-query.php:		// AH Update case of ID
+./includes/class-solrpower-wp-query.php:		// AH Update case of ID
+./includes/class-solrpower-wp-query.php:						// AH Updated case of ID
+./includes/class-solrpower-wp-query.php:					// AH Updated case of ID
+./includes/class-solrpower-wp-query.php:					// AH Updated case of ID
+./includes/class-solrpower-wp-query.php:					// AH Updated case of ID
+./includes/class-solrpower-sync.php:			// AH Updated case of ID
+./includes/class-solrpower-sync.php:			// AH Updated case of ID
+./schema.xml:	<!-- AH Altered case of ID field -->

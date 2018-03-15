@@ -407,10 +407,14 @@ class SolrPower_Api {
 			 *
 			 * @param string $solr_boost_query String of items, with their boost applied.
 			 */
-			$solr_boost_query = apply_filters( 'solr_boost_query', 'post_title^2 post_content^1.2' );
-			if ( false !== $solr_boost_query ) {
-				$dismax->setBoostFunctions( $solr_boost_query );
-			}
+
+			// AH - Using QueryFields rather than a Boost Function to make these fields more important
+			//$solr_boost_query = apply_filters( 'solr_boost_query', 'post_title^2 post_content^1.2' );
+			//if ( false !== $solr_boost_query ) {
+			//	$dismax->setBoostFunctions( $solr_boost_query );
+			//}
+			$dismax->setQueryFields("post_title^5 post_content^2");
+			// AH - End of changes
 
 			/**
 			 * Filter the Solarium dismax query object.
@@ -447,10 +451,16 @@ class SolrPower_Api {
 			$query->setQueryDefaultOperator( $default_operator );
 
 			// Wildcards.
+			
+			// AH - This doesn't seem to be working.. commenting it out seems to work much better.
+			/*
 			if ( strstr( $query->getQuery(), '*:*' ) ) {
 				$dismax->setQueryAlternative( $query->getQuery() );
 				$query->setQuery( '' );
-			}
+			}*/
+			// AH - End of change
+
+
 			/**
 			 * Filter the Solarium query object.
 			 *
@@ -493,6 +503,11 @@ class SolrPower_Api {
 		if ( false === $stats ) {
 
 			$post_types = SolrPower::get_post_types();
+
+			// AH - Added Nutch custom post types
+			//array_push($post_types, "FHIR Resources");
+			array_push($post_types, "fhir");
+			array_push($post_types, "APISpec");
 
 			$stats = array();
 			foreach ( $post_types as $type ) {
@@ -593,8 +608,12 @@ class SolrPower_Api {
 	 * @return Solarium\QueryType\Select\Query\Query
 	 */
 	function dismax_query( $query, $dismax ) {
-		$dismax->setQueryAlternative( $query->getQuery() );
-		$query->setQuery( '' );
+		// AH - The below logic is only needed/wanted for the stats page, not for the general searches
+		if ( substr( $query->getQuery(), 0, 9 ) === "post_type" ) {
+			$dismax->setQueryAlternative( $query->getQuery() );
+			$query->setQuery( '' );
+		}
+		// AH - End of change
 
 		return $query;
 	}
