@@ -4,6 +4,52 @@ This is a fork of the solr-power wordpress plugin to incorporate a few small cus
 
 The customisations are to allow the usual indexing of wordpress pages to work smoothly alongside additional pages in Solr, injected into the index using a Nutch crawler (see [here](https://github.com/health-and-care-developer-network/solr-search) for the configuration and scripts used for this).
 
+This should be installed into the **wp-content/plugins/solr-power-devnet** directory.
+
+The plugin also has dependencies on other libraries which also need to be downloaded using [PHP Composer](https://getcomposer.org), and also used [Grunt](https://gruntjs.com/getting-started) to prepare the plugin for deployment.
+
+## Install Instructions: ##
+
+- Install composer as per instructions [here](https://getcomposer.org/download/)
+- Install some other requires packages for PHP and Node.js:
+
+```bash
+sudo apt-get install php-mbstring npm nodejs nodejs-legacy
+sudo npm update -g npm
+sudo npm install -g grunt-cli
+```
+
+- Clone this repository
+
+```bash
+git clone https://github.com/health-and-care-developer-network/solr-power.git
+```
+
+- Go into the cloned repo, and run composer to download dependencies
+
+```bash
+cd solr-power
+composer install
+```
+
+- Now install and run Grunt to prepare the plugin for use (minify js, compile css, etc):
+
+```bash
+sudo npm install
+grunt
+```
+
+- Now copy the plugin into your wordpress plugins folder:
+
+```bash
+cd ..
+cp -R solr-power {$WORDPRESS_ROOT}/wp-content/plugins/solr-power-devnet
+```
+
+- NOTE: The plugin directory under wp-plugins MUST be called solr-power-devnet and not solr-power to ensure wordpress doesn't try to update it when a new version of the original solr-power plugin is released.
+
+- 
+
 The original README for solr-search is below:
 
 # Solr Search for WordPress #

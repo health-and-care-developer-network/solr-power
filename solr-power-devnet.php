@@ -1,10 +1,10 @@
 <?php
 /**
- * Plugin Name: Solr Power
+ * Plugin Name: Solr Power (DevNet Fork)
  * Description: Allows WordPress sites to index and search content with ApacheSolr.
  * Version: 1.4.1
- * Author: Pantheon
- * Author URI: http://pantheon.io
+ * Author: Adam Hatherly / Pantheon
+ * Author URI: https://github.com/health-and-care-developer-network/solr-power
  * Text Domain: solr-for-wordpress-on-pantheon
  *
  * @package Solr_Power

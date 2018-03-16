@@ -1,9 +1,9 @@
 {
-  "name": "solr-power",
+  "name": "solr-power-devnetfork",
   "version": "1.4.1",
   "repository": {
     "type": "git",
-    "url": "https://github.com/pantheon-systems/solr-power.git"
+    "url": "https://github.com/health-and-care-developer-network/solr-power.git"
   },
   "main": "Gruntfile.js",
   "author": "Pantheon <noreply@pantheon.io>",
