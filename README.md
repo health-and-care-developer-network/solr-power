@@ -44,6 +44,8 @@ grunt
 ```bash
 cd ..
 cp -R solr-power {$WORDPRESS_ROOT}/wp-content/plugins/solr-power-devnet
+rm -Rf {$WORDPRESS_ROOT}/wp-content/plugins/solr-power-devnet/.git
+rm -Rf {$WORDPRESS_ROOT}/wp-content/plugins/solr-power-devnet/node_modules
 ```
 
 - NOTE: The plugin directory under wp-plugins MUST be called solr-power-devnet and not solr-power to ensure wordpress doesn't try to update it when a new version of the original solr-power plugin is released.
